@@ -2,26 +2,26 @@
 
 ## Clone
 
-```console
+```sh
 git clone https://github.com/vladislav124352/manage-app.git
 ```
 
 ## Start
 
-```console
-#NPM
+```sh
+# NPM
 npm run dev
 
-#YARN
+# YARN
 yarn run dev
 ```
 
 ## TypeScript
 
-```console
-#NPM
+```sh
+# NPM
 npm run ts
 
-#YARN
+# YARN
 yarn run ts
 ```
