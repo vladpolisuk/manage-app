@@ -1,10 +1,24 @@
-import express, { Application, Request, Response } from 'express';
-import path from 'path';
+import express, { Application } from 'express';
+import { getProductRouter } from './routes/product';
+import { getUpdateRouter } from './routes/update';
+import { getUpdatePointRouter } from './routes/update-point';
+import morgan from 'morgan';
+import cors from 'cors';
 
-export const app: Application = express();
+const app: Application = express();
+const loggingMiddleware = morgan('[:user-agent] :method :url :status :res[content-length] - :response-time ms\n');
+app.use(loggingMiddleware);
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
-app.use(express.static('static'));
+const productRouter = getProductRouter();
+app.use('/api/product', productRouter);
 
-app.get('/', (req: Request, res: Response) => {
-	res.sendFile(path.resolve('pages/index.html'));
-});
+const updateRouter = getUpdateRouter();
+app.use('/api/update', updateRouter);
+
+const updatePointRouter = getUpdatePointRouter();
+app.use('/api/updatepoint', updatePointRouter);
+
+export default app;
