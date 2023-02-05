@@ -17,5 +17,9 @@
 		"exactOptionalPropertyTypes": true,
 		"pretty": true,
 		"strictFunctionTypes": true
-	}
+	},
+	"exclude": [
+		"node_modules",
+		"dist"
+	]
 }
